@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  rancher:
+    image: rancher/rancher:latest
+    container_name: rancher_huangfra
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+      - "8443:443"   # Change the ports as needed
+    volumes:
+      - ./rancher:/var/lib/rancher
+      - ./rancher/log/auditlog:/var/log/auditlog
+    environment:
+      - CATTLE_BOOTSTRAP_PASSWORD=123456   # Set your password here
+    privileged: true
+    networks:
+      - rancher_network
+
+networks:
+  rancher_network:
+    driver: bridge
