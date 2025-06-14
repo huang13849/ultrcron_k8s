@@ -9,8 +9,8 @@ services:
       - "8080:80"
       - "8443:443"   # Change the ports as needed
     volumes:
-      - ./rancher:/var/lib/rancher
-      - ./rancher/log/auditlog:/var/log/auditlog
+      - ~/rancher:/var/lib/rancher
+      - ~/rancher/log/auditlog:/var/log/auditlog
     environment:
       - CATTLE_BOOTSTRAP_PASSWORD=123456   # Set your password here
     privileged: true
